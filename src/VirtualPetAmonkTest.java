@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class VirtualPetAmonkTest {
 
 	CareTaker underTest = new CareTaker(" ", " ", " ");
-	
+	Dog dog = new Dog();
 	@Test
 	public void ShouldBeAbleToReceiveOil() {
 		 RobotDog robotDog = new RobotDog();
@@ -39,13 +39,42 @@ class VirtualPetAmonkTest {
 
 	
 	@Test
-	public void  HaveBowlMovementsWhenFull() {
-		Dog underTest = new Dog();
+	public void  ShouldBeAbleToIncreasePetHealthWithWalk() {
 		Dog dog = new Dog();
 		
-		int urgeToGo = dog.getNeedToGo();
-		underTest.bowlMovement(dog);
-		int afterGoing= dog.getNeedToGo();
-		assertThat(urgeToGo-afterGoing, is(10));
+		int levelOfHealthBeforeWalk=dog.getHealth();
+		underTest.walkDog(dog);
+		int levelofHealthAfterWalk=dog.getHealth();
+		assertThat(levelofHealthAfterWalk+levelOfHealthBeforeWalk, is (15));
 	}
+
+	@Test
+	public void ShouldBeAbleToPlayWithCat() {
+		Cat cat =new Cat();
+		
+		int beforePlayingWithCat = cat.getHappy();
+		underTest.playWithCat(cat);
+		int afterPlayingWithCat= cat.getHappy();
+		assertThat(beforePlayingWithCat+afterPlayingWithCat, is (15));
+	}
+
+	@Test
+	public void ShouldBeAbleToUseBathroom() {
+	
+		
+		int beforeGoing = dog.useIt();
+		underTest.relief(dog);
+		int afterGoing=dog.useIt();
+		assertThat(beforeGoing-afterGoing, is (10));
+	}
+
+	@Test
+	public void ShouldBeAbleToUseLitterBox() {
+		Cat cat = new Cat();
+		int needsTheLitterBox = cat.full();
+		underTest.relief(cat);
+		int usedTheLitterBox= cat.full();
+		assertThat(needsTheLitterBox-usedTheLitterBox, is (10));
+	}
+
 }

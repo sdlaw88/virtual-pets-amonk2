@@ -1,17 +1,31 @@
 
 public class Dog {
 
-	private static final int Default_relief = -10;
+	
+
+
+	private static final int Default_Full = 20;
+
+
+
+	private static final int Default_Health_Level = 10;
+
 
 
 	private static final int Default_Hunger_Level = 10;
 	
 	
-	int useIt=Default_relief;
+	
 	int hungerLevel=Default_Hunger_Level;
 
 
-	private int rdyToGo=20;
+	
+
+	private int healthLevel=Default_Health_Level;
+
+
+
+	private int useIt=Default_Full;
 	
 	public int gethunger() {
 		
@@ -30,23 +44,32 @@ public int	gethungerLevel() {
 	return hungerLevel;
 }
 
-
-
-public int getNeedToGo() {
+public int getHealth() {
 	
-	return rdyToGo;
+	return healthLevel;
 }
 
-public void bowlMovement(Dog dog) {
+public void walk(int walk) {
 	
+	healthLevel=+walk;
 	
 }
 
-private void useIt(int useIt) {
+public int useIt() {
 	
 	
-	
+	return useIt;
 }
+
+public void relief(int outside) {
+	
+	useIt-=outside;
+
+}
+
+
+
+
 
  
 }
