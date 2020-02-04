@@ -76,5 +76,15 @@ class VirtualPetAmonkTest {
 		int usedTheLitterBox= cat.full();
 		assertThat(needsTheLitterBox-usedTheLitterBox, is (10));
 	}
-
+	//Come back to this test
+	@Test
+	public void CanCleanCageWhenItIsFull() {
+		CareTaker caretaker = new CareTaker();
+	int beforeChangingTheCage = VirtualPetShelter.dirtyCage();
+		underTest.clean(dog);
+	int afterCleaningTheCage = VirtualPetShelter.dirtyCage();
+	assertThat(afterCleaningTheCage-beforeChangingTheCage, is (10));
+	}
+	
+	
 }
